@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <style>
+        /* Basic reset for margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Form styling */
+form {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table cell styling */
+td {
+    padding: 12px;
+    vertical-align: middle;
+}
+
+/* Input and textarea styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Radio button styling */
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Textarea styling */
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Button styling */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Placeholder text styling */
+input::placeholder,
+textarea::placeholder {
+    color: #888;
+}
+
+    
+    </style>
+    <body>
+        <form action="/conreg/" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Name: </td>
+                    <td><input type="text" name="conname" placeholder="Type your name.."></td>
+                </tr>
+                <tr>
+                    <td>Email id</td>
+                    <td><input type="email" name="email" placeholder="vijay@gmail.com"></td>
+                </tr>
+                <tr>
+                    <td>Phone Number</td>
+                    <td><input type="text" name="phone" placeholder="9876543210"></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <input type="radio" name="humans" value="Male">Male
+                        <input type="radio" name="humans" value="female">Female
+                        <input type="radio" name="humans" value="Human">Human
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Village & Address</td>
+                    <td>
+                        <textarea name="address" placeholder="Type your Address here.."></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="pwd" placeholder="Set Password.."></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button>Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

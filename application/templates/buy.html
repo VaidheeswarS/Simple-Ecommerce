@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <style>
+    /* Basic reset for margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Form styling */
+form {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+/* Table header styling */
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Header styling */
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Image styling */
+img {
+    border-radius: 8px;
+}
+
+/* Input styling */
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Button styling */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Link styling for buttons */
+a {
+    text-decoration: none;
+}
+
+
+    </style>
+
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <th>no</th>
+                    <th>Product Name</th>
+                    <th>Product Photo</th>
+                    <th>seller</th>
+                    <th>seller email</th>
+                    <th>Seller Phone</th>
+                    <th>seller Address</th>
+                    <th>Customer name</th>
+                    <th>Customer email</th>
+                    <th>Customer Phone</th>
+                    <th>Customer Address</th>
+                                      
+                </tr>
+                <tr>
+                    <td>{{prd.No}}</td>
+                    <td>{{prd.Product}}</td>
+                    <td><img src="{{prd.product_Photo.url}}" alt="Product photo" height="120px" width="120px"></td>
+                    <td>{{slr.Seller_name}}</td>
+                    <td>{{slr.Seller_email}}</td>
+                    <td>{{slr.Phone}}</td>
+                    <td>{{slr.Address}}</td>
+                    <td>{{hum.Name}}</td>
+                    <td>{{hum.email}}</td>
+                    <td>{{hum.Phone}}</td>
+                    <td>{{hum.Address}}</td>
+                   
+            </table>
+            <table>
+                <tr>
+                    <td>Quantity</td>
+                    <td><input type="number" name="qty"></td>
+                </tr>
+                <tr>
+                    <td> <a href="{% url 'purchase' prd.No hum.email %}"><button>Confirm</button></a></td>
+                </tr>
+            </table>
+
+
+
+
+            
+        </form>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f75858;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4a460;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        img {
+            border-radius: 5px;
+            height: 120px;
+            width: 120px;
+        }
+    </style>
+    <body>
+            <table>
+                <tr>
+                    <td>Product Name</td>
+                    <td>Product Photo</td>
+                    <td>Seller Name</td>
+                    <td>Seller email</td>
+                    <td>Seller Address</td>
+                    <td>Buyer Name</td>
+                    <td>Buyer email</td>
+                    <td>Quantity</td>
+                    <td>Rate</td>
+                    <td>Buyed Date</td>
+                </tr>
+                {% for d in my %}
+                <tr>
+                    <td>{{d.product_name}}</td>
+                    <td><img src="{{d.product_Photo.url}}" alt="product_Photo" ></td>
+                    <td>{{d.Seller_name}}</td>
+                    <td>{{d.seller_email_id}}</td>
+                    <td>{{d.Seller_address}}</td>
+                    <td>{{cus.Name}}</td>
+                    <td>{{cus.email}}</td>
+                    <td>{{d.quantity}}</td>
+                    <td>{{d.rate}}</td>
+                    <td>{{d.buyeddate}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+
+    /* General body styling */
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Form styling */
+form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+/* Image styling */
+table img {
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Link styling */
+a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Button styling */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Specific styling for update and delete links in the table */
+td a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    text-align: center;
+}
+
+td a[href*="updatepro"] {
+    background-color: #007BFF;
+}
+
+td a[href*="deletepro"] {
+    background-color: #dc3545;
+}
+
+td a[href*="updatepro"]:hover {
+    background-color: #0056b3;
+}
+
+td a[href*="deletepro"]:hover {
+    background-color: #c82333;
+}
+</style>
+    <body>
+        <form action="#">
+            <table>
+                <tr>
+                    <th>S.No</th>
+                    <th>Seller Name</th>
+                    <th>Email</th>
+                    <th>Product Name</th>
+                    <th>Product Photo</th>
+                    <th>Specifications</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Date_Packed</th>
+                    <th>Recently updated</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+                {% for i in p_val %}
+                    
+                <tr>
+                    <td>{{ i.No }}</td>
+                    <td>{{ s_sel.Seller_name }}</td>
+                    <td>{{ i.Seller_email }}</td>
+                    <td>{{ i.Product }}</td>
+                    
+                    <td>{{ i.Specification }}</td>
+                    <td>{{ i.Quantity }}</td>
+                    <td>{{ i.Price }}</td>
+                    <td>{{ i.Date }}</td>
+                    <td>{{ i.updated }}</td>
+                    <td>
+                        <a href="{% url 'updatepro' i.No %}" method="POST">Update</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'deletepro' i.No %}">Delete</a>
+                    </td>
+                </tr>
+                    
+                {% endfor %}
+            </table>
+        </form>
+    </body>
+</html>

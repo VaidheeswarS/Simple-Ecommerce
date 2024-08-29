@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            max-width: 1200px;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .action-links a {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            background-color: #e7e7e7;
+            color: #333;
+        }
+        .action-links a.update {
+            background-color: #f0ad4e;
+            color: white;
+        }
+        .action-links a.delete {
+            background-color: #d9534f;
+            color: white;
+        }
+    </style>
+    <body>
+        <form action="#">
+            <table>
+                <tr>
+                    <th>S.No</th>
+                    <th>Consumer Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Password</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+                {% for i in people %}
+                <tr>
+                    <td>{{ i.S_No }}</td>
+                    <td>{{ i.Name }}</td>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.Phone }}</td>
+                    <td>{{ i.Gender }}</td>
+                    <td>{{ i.Address }}</td>
+                    <td>{{ i.Password }}</td>
+                    <td>
+                        <a href="{% url 'update' i.S_No %}" method="POST">Update</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete' i.S_No %}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        form {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        td a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        td a:hover {
+            text-decoration: underline;
+        }
+        td img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+    <body>
+        <form method="GET">
+            <table>
+                <tr>
+                    <th>No</th>
+                    <th>Seller</th>
+                    <th>Seller email</th>
+                    <th>Product Name</th>
+                    <th>Product Photo</th>
+                    <th>Specification</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Date Packed</th>
+                    <th>Updated</th>
+                </tr>
+                <tr>
+                    <td>{{prd.No}}</td>
+                    <td>{{prd.Seller}}</td>
+                    <td>{{slr.Seller_email}}</td>
+                    <td>{{prd.Product}}</td>
+                    <td><img src="{{prd.product_Photo.url}}" alt="product photo" height="120px" width="120px"></td>
+                    <td>{{prd.Specification}}</td>
+                    <td>{{prd.Quantity}}</td>
+                    <td>{{prd.Price}}</td>
+                    <td>{{prd.Date}}</td>
+                    <td>{{prd.updated}}</td>
+                    <td rowspan="2">
+                        <a href="{% url 'purchase' prd.No hum.email %}">BUY</a>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </body>
+</html>

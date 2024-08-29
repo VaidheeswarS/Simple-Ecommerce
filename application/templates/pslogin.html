@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    /* Form styling */
+    form {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    /* Table styling for layout */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    /* Table cell styling */
+    td {
+        padding: 10px;
+        vertical-align: middle;
+    }
+
+    /* Input field styling */
+    input[type="email"], input[type="password"] {
+        width: calc(100% - 22px); /* Account for padding and border */
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    /* Button styling */
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    /* Button hover effect */
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+    <body>
+        <form action="/pslogin/" method="POST">
+          {% csrf_token %}
+            <table>
+                <tr>
+                    <td>email id</td>
+                    <td><input type="email" name="email" placeholder="Sabitha@gmail.com"></td>
+                </tr>
+                <tr>
+                    <td>password</td>
+                    <td><input type="password" name="pwd" placeholder="Type your password here.."></td>
+                </tr>
+                <tr>
+                    <td><button>Login / sign in</button></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

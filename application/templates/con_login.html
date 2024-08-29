@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Form container styling */
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        /* Table cell styling */
+        td {
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        /* Input field styling */
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Placeholder styling */
+        input::placeholder {
+            color: #888;
+        }
+    </style>
+    <body>
+        <form action="/cuslogin/" method="POST">
+          {% csrf_token %}
+            <table>
+                <tr>
+                    <td>email id</td>
+                    <td><input type="email" name="email" placeholder="Sabitha@gmail.com"></td>
+                </tr>
+                <tr>
+                    <td>password</td>
+                    <td><input type="password" name="pwd" placeholder="Type your password here.."></td>
+                </tr>
+                <tr>
+                    <td><button>Login / sign in</button></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

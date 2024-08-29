@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
+        form {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 10px;
+            vertical-align: top;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"], input[type="file"], textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <body>
+        <form action="{% url 'updatepro' pro.No %}" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><label for="">Product Name</label></td>
+                    <td><input type="text" name="product_name" placeholder="Enter the product name..|" value="{{sal.Seller_name}}"></td>
+                </tr>
+                <tr>
+                    <td><label for="">Product Photo</label></td>
+                    <td><input type="file" name="product_photo" value="{{pro.product_Photo}}"></td>
+                </tr>
+                <tr>
+                    <td><label for="">Specifications</label></td>
+                    <td><textarea name="spec" placeholder="Enter The Specifications of the product..|" value="{{pro.Specification}}"></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="">Quantity</label></td>
+                    <td><input type="number" name="qty" placeholder="available counts" value="{{pro.Quantity}}"></td>
+                </tr>
+                <tr>
+                    <td><label for="">Price</label></td>
+                    <td><input type="number" name="price" value="{{pro.Price}}">for 1 product.</td>
+                </tr>
+
+                <tr>
+                    <td> <button>Submit Product Details</button> </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <style>
+       /* Basic reset for margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Form styling */
+form {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Header styling */
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Image styling */
+img {
+    border-radius: 8px;
+}
+
+/* Button styling */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive table for small screens */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        display: block;
+        text-align: right;
+        padding: 10px;
+    }
+
+    th::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-right: 10px;
+    }
+
+    td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-right: 10px;
+    }
+}
+
+    </style>
+    <body>
+        <form action="{% url 'final' prd.No hum.email quant amount %}" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <th>no</th>
+                    <th>Product Name</th>
+                    <th>Product Photo</th>
+                    <th>seller</th>
+                    <th>seller email</th>
+                    <th>Seller Phone</th>
+                    <th>seller Address</th>
+                    <th>Customer name</th>
+                    <th>Customer email</th>
+                    <th>Customer Phone</th>
+                    <th>Customer Address</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Pay</th>
+                </tr>
+                <tr>
+                    <td>{{prd.No}}</td>
+                    <td>{{prd.Product}}</td>
+                    <td><img src="{{prd.product_Photo}}" alt="" height="120px" width="120px"></td>
+                    <td>{{slr.Seller_name}}</td>
+                    <td>{{slr.Seller_email}}</td>
+                    <td>{{slr.Phone}}</td>
+                    <td>{{slr.Address}}</td>
+                    <td>{{hum.Name}}</td>
+                    <td>{{hum.email}}</td>
+                    <td>{{hum.Phone}}</td>
+                    <td>{{hum.Address}}</td>
+                    <td>{{quant}}</td>
+                    <td>{{amount}}</td>
+                </tr>
+                <tr>
+                    <tr>
+                        <td><button>confirm</button></td>
+                    </tr>
+                </tr>   
+            </table>
+            
+                   
+             
+
+
+
+            
+        </form>
+    </body>
+</html>

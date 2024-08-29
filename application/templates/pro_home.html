@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+<style>
+    /* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container for the forms and table */
+div {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Button styling */
+button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline-block display */
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Margins */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Merge borders */
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd; /* Border color */
+    padding: 12px; /* Cell padding */
+    text-align: left; /* Align text to the left */
+}
+
+table th {
+    background-color: #4CAF50; /* Header background */
+    color: white; /* Header text color */
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternate row background color */
+}
+
+table tr:hover {
+    background-color: #ddd; /* Highlight row on hover */
+}
+
+/* Image styling */
+img {
+    border-radius: 8px; /* Rounded corners */
+    max-width: 100%; /* Responsive image width */
+    height: auto; /* Auto height */
+}
+</style>
+    <body>
+        
+            <!-- {% csrf_token %} -->
+            <form action="{% url 'myview' owner.Seller_email %}" method="POST">
+                {% csrf_token %}
+                <button>View my products</button>
+            </form>
+                
+            </form>
+            
+            <form action="/pslogout/" method="POST">
+                {% csrf_token %}
+                <button>Logout</button>
+            </form>
+            
+            <form action="{% url 'product' owner.Seller_email %}"  method="GET">
+                {% csrf_token %}
+                <button>Sale my products</button>
+            </form>
+            <!-- <a href="{% url 'myview' owner.Seller_email %}"> view my products</a>
+            <a href="/pslogout/">Logout</a>
+            <a href="/product/">sale my product</a>
+         -->
+        <div>
+            <table>
+                <tr>
+                    <th>Seller Name</th>
+                    <th>Seller Photo</th>
+                    <th>Seller email</th>
+                    <th>Phone</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Password</th>
+                </tr>
+                <tr>
+                    <td>{{owner.Seller_name}}</td>
+                    <td><img src="{{owner.Photo.url}}" alt="Seller Image" height="120px" width="120px"></td>
+                    <td>{{owner.Seller_email}}</td>
+                    <td>{{owner.Phone}}</td>
+                    <td>{{owner.Gender}}</td>
+                    <td>{{owner.Address}}</td>
+                    <td>{{owner.Password}}</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Form styling */
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        /* Table header styling */
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+
+        /* Image styling */
+        img {
+            border-radius: 8px;
+            display: block;
+            margin: auto;
+        }
+
+        /* Link styling */
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+
+            td img {
+                height: 80px;
+                width: 80px;
+            }
+        }
+    </style>
+
+    <body>
+        <form action="#">
+            <table>
+                <tr>
+                    <th>S.No</th>
+                    <th>Seller Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Photo</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+
+                {% for i in datas %}
+                <tr>
+
+                    <td>{{ i.S_No }}</td>
+                    <td>{{ i.Seller_name }}</td>
+                    <td>{{ i.Phone }}</td>
+                    <td>{{ i.Seller_email }}</td>
+                    <td>{{ i.Gender }}</td>
+                    <td>{{ i.Address }}</td>
+                    <td><img src="{{ i.Photo.url }}" height="120px" width="120px" alt="userphoto"></td>
+                    <td>
+                        <a href="{% url 'updatesal' i.S_No %}" method="POST">Update </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'deletesal' i.S_No %}" method="POST">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </body>
+</html>

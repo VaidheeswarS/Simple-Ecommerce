@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>home</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'home.css' %}">
+    </head>
+    /* General body styling */
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation bar styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #333;
+    overflow: hidden;
+}
+
+ul li {
+    float: left;
+    display: inline;
+}
+
+ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    background-color: #111;
+}
+
+form {
+    margin: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 130px);
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+}
+
+table img {
+    border-radius: 5px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+/* Profile info styling */
+ul li div {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1;
+}
+
+ul li:hover div {
+    display: block;
+}
+
+ul li div table {
+    border: none;
+}
+
+ul li div td {
+    border: none;
+    padding: 8px 12px;
+    vertical-align: top;
+}
+
+/* Ensure the product list is well-aligned and responsive */
+form table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+form table td {
+    padding: 10px;
+    text-align: center;
+}
+
+form table img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+    <body>
+        <ul>
+            <li>
+                <form action="{% url 'search' cus.email %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="search" placeholder="search your product here..">
+                    <button>Search</button>
+                </form>
+            </li>
+            <li><a href="#">my profile </a>
+                <div>
+                    <table>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{ cus.Name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>{{ cus.email }}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone number</td>
+                            <td>{{ cus.Phone }}</td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>{{ cus.Gender }}</td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>{{ cus.Address }}</td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td>{{ cus.Password }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
+
+            <li><a href="{% url 'buyedproducts' cus.email %}">my purchase </a></li>
+            <li><a href="">settings </a></li>
+            <li><a href="{% url 'cuslogout' cus.email %}">Logout </a></li>
+        </ul>
+            <form>
+                <table>
+                    <tr>
+                        <th>Seller email</th>
+                        <th>Product Name</th>
+                        <th>Product Photo</th>
+                        <th>Product </th>
+                    </tr>
+                    
+                    {% for d in datas %}
+                    
+                    
+                        <tr>
+                            <a href="{% url 'pview' d.No cus.email %}">
+                                <td> <a href="{% url 'pview' d.No cus.email %}">{{ d.Seller_email }} </a> </td>
+                                <td> <a href="{% url 'pview' d.No cus.email %}">{{ d.Product }} </a></td>
+                                <td> <a href="{% url 'pview' d.No cus.email %}"><img src="{{d.product_Photo.url}}" alt="photo" height="120px" width="120px" ></a></td>
+                                <td> <a href="{% url 'pview' d.No cus.email %}">{{ d.Price}} </a></td>
+                                <td> <a href="{% url 'pview' d.No cus.email %}">{{ d.Date }} </a></td>
+                            </a>
+                        </tr>
+        
+                    
+                     {% endfor %}
+                </table>
+            </form> 
+    
+    </body>
+</html>
+

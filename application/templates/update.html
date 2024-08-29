@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <style>
+        textarea { 
+            height: 50px; 
+            width: 400px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        form {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 10px;
+            vertical-align: top;
+        }
+        input[type="text"], input[type="email"], input[type="password"], textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+    <body>
+        <form action="{% url 'update' upd.S_No %}" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Name: </td>
+                    <td><input type="text" name="conname" placeholder="Type your name.." value="{{upd.Name}}"></td>
+                </tr>
+                <tr>
+                    <td>Email id</td>
+                    <td><input type="email" name="email" placeholder="vijay@gmail.com" value="{{upd.email}}"></td>
+                </tr>
+                <tr>
+                    <td>Phone Number</td>
+                    <td><input type="text" name="phone" placeholder="9876543210" value="{{upd.Phone}}"></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>
+                        <input type="radio" name="humans" value="Male">Male
+                        <input type="radio" name="humans" value="female">Female
+                        <input type="radio" name="humans" value="Human">Human
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Village & Address</td>
+                    <td>
+                        <textarea name="address" placeholder="Type your Address here.." value="{{upd.Address}}"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="pwd" placeholder="Set Password.." value="{{upd.Password}}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button>Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
